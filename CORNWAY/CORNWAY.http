@@ -1,0 +1,6 @@
+@CORNWAY_HostAddress = http://localhost:5230
+
+GET {{CORNWAY_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
