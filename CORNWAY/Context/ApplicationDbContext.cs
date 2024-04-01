@@ -1,17 +1,19 @@
-﻿namespace CORNWAY.Model;
-using Microsoft.EntityFrameworkCore;
+﻿using CORNWAY.Model;
+using Microsoft.EntityFrameworkCore; 
 
-public class ApplicatioDbContext : DbContext
+namespace CORNWAY.Context
 {
-    public DbSet<Personaje> Personajes { get; set; }
-    public DbSet<Enemigo> Enemigos { get; set; }
-    public DbSet<Mascota> Mascotas { get; set; }
-    public DbSet<Arma> Armas { get; set; }
-    public DbSet<Objeto> Objetos { get; set; }
-    public DbSet<Semilla> Semillas { get; set; }
-
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    public class ApplicationDbContext : DbContext
     {
+        public DbSet<Personaje> Personaje { get; set; }
+        public DbSet<Enemigo> Enemigo { get; set; }
+        public DbSet<Mascota> Mascota { get; set; }
+        public DbSet<Arma> Arma { get; set; }
+        public DbSet<Semilla> Semilla { get; set; }
 
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+
+        }
     }
 }
