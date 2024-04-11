@@ -10,6 +10,12 @@ namespace CORNWAY.Context
         public DbSet<Mascota> Mascota { get; set; }
         public DbSet<Arma> Arma { get; set; }
         public DbSet<Semilla> Semilla { get; set; }
+        public DbSet<Herramienta> Herramienta { get; set; }
+        public DbSet<Fertilizante> Fertilizante { get; set; }
+        public DbSet<Sensor> Sensor { get; set; }
+        public DbSet<Terreno> Terrenos { get; set; }
+
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
