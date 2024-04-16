@@ -1,8 +1,12 @@
-﻿namespace CORNWAY.Model
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CORNWAY.Model
 {
     public class Mascota
     {
-        public required int MascotaId { get; set; }
+        [Key] public required int MascotaId { get; set; }
         public required int Vida { get; set; }
         public required int Daño { get; set; }
     }

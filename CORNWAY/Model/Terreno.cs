@@ -6,12 +6,12 @@ namespace CORNWAY.Model
 {
     public class Terreno
     {
-        public required int TerrenoId { get; set; }
+        [Key] public required int TerrenoId { get; set; }
         public required string Humedad { get; set; }
         public required string Temperatura { get; set; }
 
-        public required string SensorId { get; set; }
-        public required string FertiId { get; set; }
+        public required int SensorId { get; set; }
+        public required int FertiId { get; set; }
 
 
         [ForeignKey("SensorId")]

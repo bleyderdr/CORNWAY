@@ -6,7 +6,7 @@ namespace CORNWAY.Model
 {
     public class Personaje
     {
-        public required int Id { get; set; }
+        [Key] public required int Id { get; set; }
         public required string Nombre { get; set; }
         public required int Vida { get; set; }
         public required int Dinero { get; set; }
@@ -26,14 +26,19 @@ namespace CORNWAY.Model
 
         [ForeignKey("EnemigoId")]
         public required Enemigo Enemigo { get; set; }
+
         [ForeignKey("MascotaId")]
         public required Mascota Mascota { get; set; }
+
         [ForeignKey("ArmaId")]
         public required Arma Arma{ get; set; }
+
         [ForeignKey("HerramientaId")]
         public required Herramienta Herramienta { get; set; }
+
         [ForeignKey("SemillaId")]
         public required Semilla Semilla { get; set; }
+
         [ForeignKey("FertiId")]
         public required Fertilizante Fertilizante { get; set; }
     }
