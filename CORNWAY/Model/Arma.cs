@@ -11,6 +11,12 @@ namespace CORNWAY.Model
         public required string Tipo { get; set; }
         public required int Precio { get; set; }
 
+
+        public required int PersonajeId { get; set; }
+
+        [ForeignKey("PersonajeId")]
+        public required Personaje Personaje { get; set; }
+
         public Arma()
         {
         }

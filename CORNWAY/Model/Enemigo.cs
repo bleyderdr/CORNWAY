@@ -10,5 +10,7 @@ namespace CORNWAY.Model
         public required int Vida { get; set; }
         public required int Daño { get; set; }
         public required int Recompensa { get; set; }
+
+        public List<Personaje> Personaje { get; set; } = new List<Personaje>();
     }
 }

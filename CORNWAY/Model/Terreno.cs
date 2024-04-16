@@ -10,14 +10,17 @@ namespace CORNWAY.Model
         public required string Humedad { get; set; }
         public required string Temperatura { get; set; }
 
-        public required int SensorId { get; set; }
-        public required int FertiId { get; set; }
+        public int SensorId { get; set; }
+        public int FertiId { get; set; }
+        public int SemillaId { get; set; }
 
 
         [ForeignKey("SensorId")]
         public required Sensor Sensor{ get; set; }
         [ForeignKey("FertiId")]
         public required Fertilizante Fertilizante { get; set; }
+        [ForeignKey("SemillaId")]
+        public required Semilla Semilla { get; set; }
 
     }
 }

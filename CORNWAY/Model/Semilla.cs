@@ -10,6 +10,13 @@ namespace CORNWAY.Model
         public int TiempoCrecimiento { get; set; }
         public int Precio { get; set; }
 
+        public List<Terreno> Terrenos { get; set; } = new List<Terreno>();
+
+        public required int PersonajeId { get; set; }
+
+        [ForeignKey("PersonajeId")]
+        public required Personaje Personaje { get; set; }
+
 
         public Semilla()
         {

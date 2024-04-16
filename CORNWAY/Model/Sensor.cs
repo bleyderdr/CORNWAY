@@ -10,5 +10,7 @@ namespace CORNWAY.Model
         public required string Nombre { get; set; }
         public required string Descripcion { get; set; }
 
+        public required Terreno Terreno { get; set; }
+
     }
 }

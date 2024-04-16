@@ -9,5 +9,10 @@ namespace CORNWAY.Model
         [Key] public required int HerramientaId { get; set; }
         public required string Tipo { get; set; }
 
+        public required int PersonajeId { get; set; }
+
+        [ForeignKey("PersonajeId")]
+        public required Personaje Personaje { get; set; }
+
     }
 }

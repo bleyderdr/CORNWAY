@@ -9,5 +9,10 @@ namespace CORNWAY.Model
         [Key] public required int MascotaId { get; set; }
         public required int Vida { get; set; }
         public required int Daño { get; set; }
+
+        public int PersonajeId { get; set; }
+
+
+        public required Personaje Personaje { get; set; }
     }
 }

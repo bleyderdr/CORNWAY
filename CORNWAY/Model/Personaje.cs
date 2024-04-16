@@ -6,21 +6,19 @@ namespace CORNWAY.Model
 {
     public class Personaje
     {
-        [Key] public required int Id { get; set; }
+        [Key] public required int PersonajeId { get; set; }
         public required string Nombre { get; set; }
         public required int Vida { get; set; }
         public required int Dinero { get; set; }
         public required int Maiz { get; set; }
 
         //Variables Keys
-        public required int EnemigoId { get; set; }
-        public required int MascotaId { get; set; }
-        public required int ArmaId { get; set; }
-        public required int HerramientaId { get; set; }
-        public required int SemillaId { get; set; }
-        public required int FertiId { get; set; }
+        public int MascotaId { get; set; }
+        public int EnemigoId { get; set; }
 
-
+        public List<Herramienta> Herramienta { get; set; } = new List<Herramienta>();
+        public List<Arma> Arma { get; set; } = new List<Arma>();
+        public List<Semilla> Semilla { get; set; } = new List<Semilla>();
 
 
 
@@ -30,16 +28,6 @@ namespace CORNWAY.Model
         [ForeignKey("MascotaId")]
         public required Mascota Mascota { get; set; }
 
-        [ForeignKey("ArmaId")]
-        public required Arma Arma{ get; set; }
-
-        [ForeignKey("HerramientaId")]
-        public required Herramienta Herramienta { get; set; }
-
-        [ForeignKey("SemillaId")]
-        public required Semilla Semilla { get; set; }
-
-        [ForeignKey("FertiId")]
-        public required Fertilizante Fertilizante { get; set; }
+       
     }
 }
