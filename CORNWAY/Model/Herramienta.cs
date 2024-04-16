@@ -2,6 +2,8 @@
 {
     public class Herramienta
     {
-        //andy es gay
+        public required int HerramientaId { get; set; }
+        public required string Tipo { get; set; }
+
     }
 }

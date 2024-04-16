@@ -4,9 +4,10 @@ namespace CORNWAY.Model
 {
     public class Semilla
     {
-        public int Id { get; set; }
+        public int SemillaId { get; set; }
         public int TiempoCrecimiento { get; set; }
         public int Precio { get; set; }
+
 
         public Semilla()
         {
