@@ -6,7 +6,7 @@ namespace CORNWAY.Model
 {
     public class Fertilizante
     {
-        [Key] public required int FertiId { get; set; }
+        [Key] public int FertiId { get; set; }
         public required string Nombre { get; set; }
     }
 }

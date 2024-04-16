@@ -6,7 +6,7 @@ namespace CORNWAY.Model
 {
     public class Terreno
     {
-        [Key] public required int TerrenoId { get; set; }
+        [Key] public int TerrenoId { get; set; }
         public required string Humedad { get; set; }
         public required string Temperatura { get; set; }
 

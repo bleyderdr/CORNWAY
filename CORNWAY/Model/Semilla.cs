@@ -7,8 +7,8 @@ namespace CORNWAY.Model
     public class Semilla
     {
         [Key] public int SemillaId { get; set; }
-        public int TiempoCrecimiento { get; set; }
-        public int Precio { get; set; }
+        public required int TiempoCrecimiento { get; set; }
+        public required int Precio { get; set; }
 
         public List<Terreno> Terrenos { get; set; } = new List<Terreno>();
 

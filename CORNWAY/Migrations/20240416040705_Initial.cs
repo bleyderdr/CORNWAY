@@ -41,6 +41,7 @@ namespace CORNWAY.Migrations
                 });
 
             migrationBuilder.CreateTable(
+
                 name: "Fertilizante",
                 columns: table => new
                 {

@@ -6,10 +6,10 @@ namespace CORNWAY.Model
 {
     public class Enemigo
     {
-        [Key] public required int EnemigoId { get; set; }
+        [Key] public int EnemigoId { get; set; }
         public required int Vida { get; set; }
         public required int Daño { get; set; }
-        public required int Recompensa { get; set; }
+        public required int Recompenza { get; set; }
 
         public List<Personaje> Personaje { get; set; } = new List<Personaje>();
     }

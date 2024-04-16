@@ -6,7 +6,7 @@ namespace CORNWAY.Model
 {
     public class Mascota
     {
-        [Key] public required int MascotaId { get; set; }
+        [Key] public int MascotaId { get; set; }
         public required int Vida { get; set; }
         public required int Daño { get; set; }
 

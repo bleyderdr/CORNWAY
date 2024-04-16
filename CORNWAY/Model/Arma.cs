@@ -6,7 +6,7 @@ namespace CORNWAY.Model
 {
     public class Arma
     {
-        [Key] public required int ArmaId { get; set; }
+        [Key] public int ArmaId { get; set; }
         public required int Daño { get; set; }
         public required string Tipo { get; set; }
         public required int Precio { get; set; }
@@ -15,7 +15,7 @@ namespace CORNWAY.Model
         public required int PersonajeId { get; set; }
 
         [ForeignKey("PersonajeId")]
-        public required Personaje Personaje { get; set; }
+        public Personaje Personaje { get; set; }
 
         public Arma()
         {
