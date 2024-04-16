@@ -1,5 +1,6 @@
-﻿using CORNWAY.Model;
-using Microsoft.EntityFrameworkCore; 
+﻿using System.Linq.Expressions;
+using CORNWAY.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace CORNWAY.Context
 {
@@ -13,7 +14,7 @@ namespace CORNWAY.Context
         public DbSet<Herramienta> Herramienta { get; set; }
         public DbSet<Fertilizante> Fertilizante { get; set; }
         public DbSet<Sensor> Sensor { get; set; }
-        public DbSet<Terreno> Terrenos { get; set; }
+        public DbSet<Terreno> Terreno { get; set; }
 
 
 
