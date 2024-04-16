@@ -1,4 +1,8 @@
-﻿namespace CORNWAY.Model
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CORNWAY.Model
 {
     public class Terreno
     {
