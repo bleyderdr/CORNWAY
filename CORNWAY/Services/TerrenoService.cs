@@ -51,11 +51,13 @@ namespace CORNWAY.Services
         {
             return await TerrenoRepository.CreateTerreno(new Terreno
             {
-                int Humedad,
-                int Temperatura,
-                int SensorId,
-                int FertiId,
-                int SemillaId
+
+                Humedad = Humedad,
+                Temperatura = Temperatura,
+                SensorId = SensorId,
+                FertiId = FertiId,
+                SemillaId = SemillaId
+
 
             });
         }

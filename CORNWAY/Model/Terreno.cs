@@ -16,11 +16,11 @@ namespace CORNWAY.Model
 
 
         [ForeignKey("SensorId")]
-        public required Sensor Sensor{ get; set; }
+        public Sensor Sensor{ get; set; }
         [ForeignKey("FertiId")]
-        public required Fertilizante Fertilizante { get; set; }
+        public Fertilizante Fertilizante { get; set; }
         [ForeignKey("SemillaId")]
-        public required Semilla Semilla { get; set; }
+        public Semilla Semilla { get; set; }
 
     }
 }
