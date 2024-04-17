@@ -7,10 +7,10 @@ namespace CORNWAY.Model
     public class Sensor
     {
         [Key] public int SensorId { get; set; }
-        public required string Nombre { get; set; }
-        public required string Descripcion { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
 
-        public required Terreno Terreno { get; set; }
+        public Terreno Terreno { get; set; }
 
     }
 }
