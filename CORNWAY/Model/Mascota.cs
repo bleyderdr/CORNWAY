@@ -13,6 +13,6 @@ namespace CORNWAY.Model
         public int PersonajeId { get; set; }
 
 
-        public required Personaje Personaje { get; set; }
+        public Personaje Personaje { get; set; }
     }
 }

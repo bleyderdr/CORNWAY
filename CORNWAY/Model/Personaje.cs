@@ -23,10 +23,10 @@ namespace CORNWAY.Model
 
 
         [ForeignKey("EnemigoId")]
-        public required Enemigo Enemigo { get; set; }
+        public Enemigo Enemigo { get; set; }
 
         [ForeignKey("MascotaId")]
-        public required Mascota Mascota { get; set; }
+        public Mascota Mascota { get; set; }
 
        
     }

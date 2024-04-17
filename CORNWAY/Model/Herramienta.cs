@@ -12,7 +12,7 @@ namespace CORNWAY.Model
         public required int PersonajeId { get; set; }
 
         [ForeignKey("PersonajeId")]
-        public required Personaje Personaje { get; set; }
+        public Personaje Personaje { get; set; }
 
     }
 }
