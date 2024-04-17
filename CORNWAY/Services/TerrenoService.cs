@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CORNWAY.Services
 {
-    public class ITerrenoService
+    public interface ITerrenoService
     {
         Task<IEnumerable<Terreno>> GetTerrenos();
         Task<Terreno?> GetTerreno(int id);
@@ -16,14 +16,14 @@ namespace CORNWAY.Services
             int SensorId,
             int FertiId,
             int SemillaId
-             );
+            );
         Task<Terreno> PutTerreno(
             int TerrenoId,
-            int Humedad,
-            int Temperatura,
-            int SensorId,
-            int FertiId,
-            int SemillaId
+            int? Humedad,
+            int? Temperatura,
+            int? SensorId,
+            int? FertiId,
+            int? SemillaId
             );
 
         Task<Terreno?> DeleteTerreno(int id);
@@ -35,9 +35,9 @@ namespace CORNWAY.Services
             return await TerrenoRepository.GetTerreno(id);
         }
 
-        public async Task<IEnumerable<Terreno>> GetTerreno()
+        public async Task<IEnumerable<Terreno>> GetTerrenos()
         {
-            return await TerrenoRepository.GetTerreno();
+            return await TerrenoRepository.GetTerrenos();
         }
         public async Task<Terreno> CreateTerreno(
 
@@ -45,33 +45,34 @@ namespace CORNWAY.Services
             int Temperatura,
             int SensorId,
             int FertiId,
-            int SemillaId,
+            int SemillaId
             )
 
         {
             return await TerrenoRepository.CreateTerreno(new Terreno
             {
-            int Humedad,
-            int Temperatura,
-            int SensorId,
-            int FertiId,
-            int SemillaId,
+                int Humedad,
+                int Temperatura,
+                int SensorId,
+                int FertiId,
+                int SemillaId
 
             });
         }
-        public async Task<Terreno> PutTerrenos(
+        public async Task<Terreno> PutTerreno(
               int TerrenoId,
               int? Humedad,
               int? Temperatura,
               int? SensorId,
               int? FertiId,
-              int? SemillaId,)
+              int? SemillaId
+            )
 
         {
             Terreno? newTerreno = await TerrenoRepository.GetTerreno(TerrenoId);
             if (newTerreno == null)
             {
-                throw new Exception("Terreno no encontrado");
+                throw new Exception("Terreno no encontrada");
             }
             else
             {
@@ -79,8 +80,7 @@ namespace CORNWAY.Services
                 newTerreno.Temperatura = Temperatura ?? newTerreno.Temperatura;
                 newTerreno.SensorId = SensorId ?? newTerreno.SensorId;
                 newTerreno.FertiId = FertiId ?? newTerreno.FertiId;
-                newTerreno.SemillaId = SemillaId ?? newTerreno.SemillaId;
-
+                newTerreno.SemillaId = SemillaId ?? newTerreno.SemillaId;            
                 return await TerrenoRepository.PutTerreno(newTerreno);
             }
         }
@@ -92,3 +92,4 @@ namespace CORNWAY.Services
 
     }
 }
+
