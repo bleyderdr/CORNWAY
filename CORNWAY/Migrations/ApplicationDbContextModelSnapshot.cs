@@ -32,14 +32,20 @@ namespace CORNWAY.Migrations
                     b.Property<int>("Daño")
                         .HasColumnType("int");
 
+                    b.Property<int>("PersonajeId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Precio")
                         .HasColumnType("int");
 
                     b.Property<string>("Tipo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ArmaId");
+
+                    b.HasIndex("PersonajeId");
 
                     b.ToTable("Arma");
                 });
@@ -55,7 +61,7 @@ namespace CORNWAY.Migrations
                     b.Property<int>("Daño")
                         .HasColumnType("int");
 
-                    b.Property<int>("Recompensa")
+                    b.Property<int>("Recompenza")
                         .HasColumnType("int");
 
                     b.Property<int>("Vida")
@@ -76,7 +82,8 @@ namespace CORNWAY.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("FertiId");
 
@@ -91,11 +98,17 @@ namespace CORNWAY.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HerramientaId"));
 
+                    b.Property<int>("PersonajeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Tipo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("HerramientaId");
+
+                    b.HasIndex("PersonajeId");
 
                     b.ToTable("Herramienta");
                 });
@@ -111,24 +124,26 @@ namespace CORNWAY.Migrations
                     b.Property<int>("Daño")
                         .HasColumnType("int");
 
+                    b.Property<int>("PersonajeId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Vida")
                         .HasColumnType("int");
 
                     b.HasKey("MascotaId");
+
+                    b.HasIndex("PersonajeId");
 
                     b.ToTable("Mascota");
                 });
 
             modelBuilder.Entity("CORNWAY.Model.Personaje", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PersonajeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ArmaId")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PersonajeId"));
 
                     b.Property<int>("Dinero")
                         .HasColumnType("int");
@@ -136,41 +151,20 @@ namespace CORNWAY.Migrations
                     b.Property<int>("EnemigoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FertiId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HerramientaId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Maiz")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MascotaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SemillaId")
-                        .HasColumnType("int");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Vida")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArmaId");
+                    b.HasKey("PersonajeId");
 
                     b.HasIndex("EnemigoId");
-
-                    b.HasIndex("FertiId");
-
-                    b.HasIndex("HerramientaId");
-
-                    b.HasIndex("MascotaId");
-
-                    b.HasIndex("SemillaId");
 
                     b.ToTable("Personaje");
                 });
@@ -183,6 +177,9 @@ namespace CORNWAY.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SemillaId"));
 
+                    b.Property<int>("PersonajeId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Precio")
                         .HasColumnType("int");
 
@@ -190,6 +187,8 @@ namespace CORNWAY.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("SemillaId");
+
+                    b.HasIndex("PersonajeId");
 
                     b.ToTable("Semilla");
                 });
@@ -204,13 +203,20 @@ namespace CORNWAY.Migrations
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("TerrenoId")
+                        .HasColumnType("int");
 
                     b.HasKey("SensorId");
+
+                    b.HasIndex("TerrenoId");
 
                     b.ToTable("Sensor");
                 });
@@ -226,75 +232,88 @@ namespace CORNWAY.Migrations
                     b.Property<int>("FertiId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Humedad")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SensorId")
+                    b.Property<int>("Humedad")
                         .HasColumnType("int");
 
-                    b.Property<string>("Temperatura")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("SemillaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Temperatura")
+                        .HasColumnType("int");
 
                     b.HasKey("TerrenoId");
 
                     b.HasIndex("FertiId");
 
-                    b.HasIndex("SensorId");
+                    b.HasIndex("SemillaId");
 
                     b.ToTable("Terreno");
                 });
 
-            modelBuilder.Entity("CORNWAY.Model.Personaje", b =>
+            modelBuilder.Entity("CORNWAY.Model.Arma", b =>
                 {
-                    b.HasOne("CORNWAY.Model.Arma", "Arma")
+                    b.HasOne("CORNWAY.Model.Personaje", "Personaje")
                         .WithMany()
-                        .HasForeignKey("ArmaId")
+                        .HasForeignKey("PersonajeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Personaje");
+                });
+
+            modelBuilder.Entity("CORNWAY.Model.Herramienta", b =>
+                {
+                    b.HasOne("CORNWAY.Model.Personaje", "Personaje")
+                        .WithMany()
+                        .HasForeignKey("PersonajeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Personaje");
+                });
+
+            modelBuilder.Entity("CORNWAY.Model.Mascota", b =>
+                {
+                    b.HasOne("CORNWAY.Model.Personaje", "Personaje")
+                        .WithMany()
+                        .HasForeignKey("PersonajeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Personaje");
+                });
+
+            modelBuilder.Entity("CORNWAY.Model.Personaje", b =>
+                {
                     b.HasOne("CORNWAY.Model.Enemigo", "Enemigo")
                         .WithMany()
                         .HasForeignKey("EnemigoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CORNWAY.Model.Fertilizante", "Fertilizante")
-                        .WithMany()
-                        .HasForeignKey("FertiId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CORNWAY.Model.Herramienta", "Herramienta")
-                        .WithMany()
-                        .HasForeignKey("HerramientaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CORNWAY.Model.Mascota", "Mascota")
-                        .WithMany()
-                        .HasForeignKey("MascotaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CORNWAY.Model.Semilla", "Semilla")
-                        .WithMany()
-                        .HasForeignKey("SemillaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Arma");
-
                     b.Navigation("Enemigo");
+                });
 
-                    b.Navigation("Fertilizante");
+            modelBuilder.Entity("CORNWAY.Model.Semilla", b =>
+                {
+                    b.HasOne("CORNWAY.Model.Personaje", "Personaje")
+                        .WithMany()
+                        .HasForeignKey("PersonajeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Herramienta");
+                    b.Navigation("Personaje");
+                });
 
-                    b.Navigation("Mascota");
+            modelBuilder.Entity("CORNWAY.Model.Sensor", b =>
+                {
+                    b.HasOne("CORNWAY.Model.Terreno", "Terreno")
+                        .WithMany()
+                        .HasForeignKey("TerrenoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Semilla");
+                    b.Navigation("Terreno");
                 });
 
             modelBuilder.Entity("CORNWAY.Model.Terreno", b =>
@@ -305,15 +324,15 @@ namespace CORNWAY.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CORNWAY.Model.Sensor", "Sensor")
+                    b.HasOne("CORNWAY.Model.Semilla", "Semilla")
                         .WithMany()
-                        .HasForeignKey("SensorId")
+                        .HasForeignKey("SemillaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Fertilizante");
 
-                    b.Navigation("Sensor");
+                    b.Navigation("Semilla");
                 });
 #pragma warning restore 612, 618
         }

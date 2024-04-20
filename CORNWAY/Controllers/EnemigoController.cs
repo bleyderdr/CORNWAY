@@ -30,9 +30,9 @@ namespace CORNWAY.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CreateEnemigo(
-                       [Required] int Vida,
-                                  [Required] int Daño,
-                                             [Required] int Recompenza
+             [Required] int Vida,
+             [Required] int Daño,
+             [Required] int Recompenza
                        )
         {
             var newEnemigo = await enemigoService.CreateEnemigo(Vida, Daño, Recompenza);
@@ -41,10 +41,10 @@ namespace CORNWAY.Controllers
 
         [HttpPut]
         public async Task<IActionResult> PutEnemigo(
-                       [Required] int EnemigoId,
-                                  [Required] int? Vida,
-                                             [Required] int? Daño,
-                                                        [Required] int? Recompenza
+             [Required] int EnemigoId,
+             [Required] int? Vida,
+             [Required] int? Daño,
+             [Required] int? Recompenza
                        )
         {
             var newEnemigo = await enemigoService.PutEnemigo(EnemigoId, Vida, Daño, Recompenza);

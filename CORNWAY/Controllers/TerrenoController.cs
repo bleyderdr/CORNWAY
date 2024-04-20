@@ -31,26 +31,24 @@ namespace CORNWAY.Controllers
         public async Task<IActionResult> Createterreno(
             [Required] int Humedad,
             [Required] int Temperatura,
-            [Required] int SensorId,
             [Required] int FertiId,
             [Required] int SemillaId
             )
         {
-            var newTerreno = await terrenoService.CreateTerreno(Humedad, Temperatura, SensorId, FertiId, SemillaId);
+            var newTerreno = await terrenoService.CreateTerreno(Humedad, Temperatura, FertiId, SemillaId);
             return CreatedAtAction(nameof(GetTerreno), new { id = newTerreno.TerrenoId }, newTerreno);
         }
 
         [HttpPut]
         public async Task<IActionResult> PutTerreno(
-                       [Required] int TerrenoId,
-                                  [Required] int? Humedad,
-                                             [Required] int? Temperatura,
-                                                        [Required] int? SensorId,
-                                                                   [Required] int? FertiId,
-                                                                              [Required] int? SemillaId
-                       )
+            [Required] int TerrenoId,
+            [Required] int? Humedad,
+            [Required] int? Temperatura,
+            [Required] int? FertiId,
+            [Required] int? SemillaId
+            )
         {
-            var newTerreno = await terrenoService.PutTerreno(TerrenoId, Humedad, Temperatura, SensorId, FertiId, SemillaId);
+            var newTerreno = await terrenoService.PutTerreno(TerrenoId, Humedad, Temperatura, FertiId, SemillaId);
             return Ok(newTerreno);
         }
 

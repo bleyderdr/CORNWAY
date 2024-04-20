@@ -13,7 +13,6 @@ namespace CORNWAY.Services
         Task<Terreno> CreateTerreno(
             int Humedad,
             int Temperatura,
-            int SensorId,
             int FertiId,
             int SemillaId
             );
@@ -21,7 +20,6 @@ namespace CORNWAY.Services
             int TerrenoId,
             int? Humedad,
             int? Temperatura,
-            int? SensorId,
             int? FertiId,
             int? SemillaId
             );
@@ -43,7 +41,6 @@ namespace CORNWAY.Services
 
             int Humedad,
             int Temperatura,
-            int SensorId,
             int FertiId,
             int SemillaId
             )
@@ -54,7 +51,6 @@ namespace CORNWAY.Services
 
                 Humedad = Humedad,
                 Temperatura = Temperatura,
-                SensorId = SensorId,
                 FertiId = FertiId,
                 SemillaId = SemillaId
 
@@ -65,7 +61,6 @@ namespace CORNWAY.Services
               int TerrenoId,
               int? Humedad,
               int? Temperatura,
-              int? SensorId,
               int? FertiId,
               int? SemillaId
             )
@@ -80,7 +75,6 @@ namespace CORNWAY.Services
             {
                 newTerreno.Humedad = Humedad ?? newTerreno.Humedad;
                 newTerreno.Temperatura = Temperatura ?? newTerreno.Temperatura;
-                newTerreno.SensorId = SensorId ?? newTerreno.SensorId;
                 newTerreno.FertiId = FertiId ?? newTerreno.FertiId;
                 newTerreno.SemillaId = SemillaId ?? newTerreno.SemillaId;            
                 return await TerrenoRepository.PutTerreno(newTerreno);

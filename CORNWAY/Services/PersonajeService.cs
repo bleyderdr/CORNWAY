@@ -15,7 +15,6 @@ namespace CORNWAY.Services
               int Vida,
               int Dinero,
               int Maiz,
-              int MascotaId,
               int EnemigoId
               );
         Task<Personaje> PutPersonaje(
@@ -24,7 +23,6 @@ namespace CORNWAY.Services
               int? Vida,
               int? Dinero,
               int? Maiz,
-              int? MascotaId,
               int? EnemigoId
               );
          
@@ -47,7 +45,6 @@ namespace CORNWAY.Services
             int Vida,
             int Dinero,
             int Maiz,
-            int MascotaId,
             int EnemigoId
                        )
         {
@@ -57,7 +54,6 @@ namespace CORNWAY.Services
                 Vida = Vida,
                 Dinero = Dinero,
                 Maiz = Maiz,
-                MascotaId = MascotaId,
                 EnemigoId = EnemigoId
             });
         }
@@ -68,7 +64,6 @@ namespace CORNWAY.Services
                 int? Vida,
                 int? Dinero,
                 int? Maiz,
-                int? MascotaId,
                 int? EnemigoId
                 )
         {
@@ -83,7 +78,6 @@ namespace CORNWAY.Services
                 newPersonaje.Vida = Vida ?? newPersonaje.Vida;
                 newPersonaje.Dinero = Dinero ?? newPersonaje.Dinero;
                 newPersonaje.Maiz = Maiz ?? newPersonaje.Maiz;
-                newPersonaje.MascotaId = MascotaId ?? newPersonaje.MascotaId;
                 newPersonaje.EnemigoId = EnemigoId ?? newPersonaje.EnemigoId;
                return await personajeRepository.PutPersonaje(newPersonaje);
            }

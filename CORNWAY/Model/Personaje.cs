@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CORNWAY.Model
@@ -7,27 +8,16 @@ namespace CORNWAY.Model
     public class Personaje
     {
         [Key] public int PersonajeId { get; set; }
+        [MaxLength(50)]
         public required string Nombre { get; set; }
         public required int Vida { get; set; }
         public required int Dinero { get; set; }
         public required int Maiz { get; set; }
-
-        //Variables Keys
-        public int MascotaId { get; set; }
+        [ForeignKey(nameof(Enemigo))]
         public int EnemigoId { get; set; }
 
-        public List<Herramienta> Herramienta { get; set; } = new List<Herramienta>();
-        public List<Arma> Arma { get; set; } = new List<Arma>();
-        public List<Semilla> Semilla { get; set; } = new List<Semilla>();
 
-
-
-        [ForeignKey("EnemigoId")]
-        public Enemigo Enemigo { get; set; }
-
-        [ForeignKey("MascotaId")]
-        public Mascota Mascota { get; set; }
-
+        public virtual Enemigo? Enemigo { get; set; }
        
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CORNWAY.Model
@@ -9,18 +10,13 @@ namespace CORNWAY.Model
         [Key] public int TerrenoId { get; set; }
         public required int Humedad { get; set; }
         public required int Temperatura { get; set; }
-
-        public int SensorId { get; set; }
+        [ForeignKey(nameof(Fertilizante))]
         public int FertiId { get; set; }
+        [ForeignKey(nameof(Semilla))]
         public int SemillaId { get; set; }
 
-
-        [ForeignKey("SensorId")]
-        public Sensor Sensor{ get; set; }
-        [ForeignKey("FertiId")]
-        public Fertilizante Fertilizante { get; set; }
-        [ForeignKey("SemillaId")]
-        public Semilla Semilla { get; set; }
+        public virtual Fertilizante? Fertilizante { get; set; }
+        public virtual Semilla? Semilla { get; set; }
 
     }
 }

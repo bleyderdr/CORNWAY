@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CORNWAY.Model
@@ -11,6 +12,5 @@ namespace CORNWAY.Model
         public required int Daño { get; set; }
         public required int Recompenza { get; set; }
 
-        public List<Personaje> Personaje { get; set; } = new List<Personaje>();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CORNWAY.Model
@@ -9,10 +10,10 @@ namespace CORNWAY.Model
         [Key] public int MascotaId { get; set; }
         public required int Vida { get; set; }
         public required int Daño { get; set; }
-
+        [ForeignKey(nameof(Personaje))]
         public int PersonajeId { get; set; }
 
 
-        public Personaje Personaje { get; set; }
+        public virtual Personaje? Personaje { get; set; }
     }
 }
