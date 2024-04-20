@@ -46,12 +46,10 @@ namespace CORNWAY.Repositories
         
         public async Task<Fertilizante?> DeleteFertilizante(int id)
         {
-            var fertilizante = await _db.Fertilizante.FindAsync(id);
-            if (fertilizante == null)
-            {
-                return null;
-            }
-            _db.Fertilizante.Remove(fertilizante);
+            Fertilizante? fertilizante = await _db.Fertilizante.FindAsync(id);
+            if (fertilizante == null) return fertilizante;
+            fertilizante.IsActive = false;
+            _db.Entry(fertilizante).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return fertilizante;
         }

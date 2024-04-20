@@ -10,5 +10,7 @@ namespace CORNWAY.Model
         [Key] public int FertiId { get; set; }
         [MaxLength(50)]
         public required string Nombre { get; set; }
+        [JsonIgnore]
+        public bool IsActive { get; set; } = true;
     }
 }

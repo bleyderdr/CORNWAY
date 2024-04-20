@@ -46,12 +46,10 @@ namespace CORNWAY.Repositories
         
         public async Task<Terreno?> DeleteTerreno(int id)
         {
-            var terreno = await _db.Terreno.FindAsync(id);
-            if (terreno == null)
-            {
-                return null;
-            }
-            _db.Terreno.Remove(terreno);
+            Terreno? terreno = await _db.Terreno.FindAsync(id);
+            if (terreno == null) return terreno;
+            terreno.IsActive = false;
+            _db.Entry(terreno).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return terreno;
         }

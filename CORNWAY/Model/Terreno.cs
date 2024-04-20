@@ -17,6 +17,8 @@ namespace CORNWAY.Model
 
         public virtual Fertilizante? Fertilizante { get; set; }
         public virtual Semilla? Semilla { get; set; }
+        [JsonIgnore]
+        public bool IsActive { get; set; } = true;
 
     }
 }

@@ -17,6 +17,8 @@ namespace CORNWAY.Model
         public int TerrenoId { get; set; }
 
         public virtual Terreno? Terreno { get; set; }
+        [JsonIgnore]
+        public bool IsActive { get; set; } = true;
 
     }
 }

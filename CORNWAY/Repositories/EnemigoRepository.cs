@@ -46,12 +46,10 @@ namespace CORNWAY.Repositories
         
         public async Task<Enemigo?> DeleteEnemigo(int id)
         {
-            var enemigo = await _db.Enemigo.FindAsync(id);
-            if (enemigo == null)
-            {
-                return null;
-            }
-            _db.Enemigo.Remove(enemigo);
+            Enemigo? enemigo = await _db.Enemigo.FindAsync(id);
+            if (enemigo == null) return enemigo;
+            enemigo.IsActive = false;
+            _db.Entry(enemigo).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return enemigo;
         }

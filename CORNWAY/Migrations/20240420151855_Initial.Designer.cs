@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CORNWAY.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240420035556_Initial")]
+    [Migration("20240420151855_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -20,6 +20,9 @@ namespace CORNWAY.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -34,6 +37,9 @@ namespace CORNWAY.Migrations
 
                     b.Property<int>("Daño")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<int>("PersonajeId")
                         .HasColumnType("int");
@@ -64,6 +70,9 @@ namespace CORNWAY.Migrations
                     b.Property<int>("Daño")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Recompenza")
                         .HasColumnType("int");
 
@@ -83,6 +92,9 @@ namespace CORNWAY.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FertiId"));
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -100,6 +112,9 @@ namespace CORNWAY.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HerramientaId"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<int>("PersonajeId")
                         .HasColumnType("int");
@@ -126,6 +141,9 @@ namespace CORNWAY.Migrations
 
                     b.Property<int>("Daño")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<int>("PersonajeId")
                         .HasColumnType("int");
@@ -154,6 +172,9 @@ namespace CORNWAY.Migrations
                     b.Property<int>("EnemigoId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Maiz")
                         .HasColumnType("int");
 
@@ -179,6 +200,9 @@ namespace CORNWAY.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SemillaId"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<int>("PersonajeId")
                         .HasColumnType("int");
@@ -209,6 +233,9 @@ namespace CORNWAY.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -237,6 +264,9 @@ namespace CORNWAY.Migrations
 
                     b.Property<int>("Humedad")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<int>("SemillaId")
                         .HasColumnType("int");

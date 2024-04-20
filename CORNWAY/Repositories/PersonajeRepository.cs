@@ -47,12 +47,10 @@ namespace CORNWAY.Repositories
         
         public async Task<Personaje?> DeletePersonaje(int id)
         {
-            var personaje = await _db.Personaje.FindAsync(id);
-            if (personaje == null)
-            {
-                return null;
-            }
-            _db.Personaje.Remove(personaje);
+            Personaje? personaje = await _db.Personaje.FindAsync(id);
+            if (personaje == null) return personaje;
+            personaje.IsActive = false;
+            _db.Entry(personaje).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return personaje;
         }

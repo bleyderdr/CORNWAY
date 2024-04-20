@@ -14,6 +14,8 @@ namespace CORNWAY.Model
         public required int PersonajeId { get; set; }
 
         public virtual Personaje? Personaje { get; set; }
+        [JsonIgnore]
+        public bool IsActive { get; set; } = true;
 
     }
 }

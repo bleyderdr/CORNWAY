@@ -46,15 +46,12 @@ namespace CORNWAY.Repositories
         
         public async Task<Herramienta?> DeleteHerramienta(int id)
         {
-            var herramienta = await _db.Herramienta.FindAsync(id);
-            if (herramienta == null)
-            {
-                return null;
-            }
-            _db.Herramienta.Remove(herramienta);
+            Herramienta? herramienta = await _db.Herramienta.FindAsync(id);
+            if (herramienta == null) return herramienta;
+            herramienta.IsActive = false;
+            _db.Entry(herramienta).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return herramienta;
         }
-
     }
 }

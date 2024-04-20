@@ -18,6 +18,8 @@ namespace CORNWAY.Model
 
 
         public virtual Enemigo? Enemigo { get; set; }
-       
+        [JsonIgnore]
+        public bool IsActive { get; set; } = true;
+
     }
 }

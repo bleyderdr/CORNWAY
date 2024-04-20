@@ -46,16 +46,13 @@ namespace CORNWAY.Repositories
         
         public async Task<Semilla?> DeleteSemilla(int id)
         {
-            var semilla = await _db.Semilla.FindAsync(id);
-            if (semilla == null)
-            {
-                return null;
-            }
-            _db.Semilla.Remove(semilla);
+            Semilla? semilla = await _db.Semilla.FindAsync(id);
+            if (semilla == null) return semilla;
+            semilla.IsActive = false;
+            _db.Entry(semilla).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return semilla;
         }
-
     }
     
 }

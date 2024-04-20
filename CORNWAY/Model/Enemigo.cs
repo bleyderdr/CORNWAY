@@ -11,6 +11,8 @@ namespace CORNWAY.Model
         public required int Vida { get; set; }
         public required int Daño { get; set; }
         public required int Recompenza { get; set; }
+        [JsonIgnore]
+        public bool IsActive { get; set; } = true;
 
     }
 }

@@ -46,12 +46,10 @@ namespace CORNWAY.Repositories
         
         public async Task<Mascota?> DeleteMascota(int id)
         {
-            var mascota = await _db.Mascota.FindAsync(id);
-            if (mascota == null)
-            {
-                return null;
-            }
-            _db.Mascota.Remove(mascota);
+            Mascota? mascota = await _db.Mascota.FindAsync(id);
+            if (mascota == null) return mascota;
+            mascota.IsActive = false;
+            _db.Entry(mascota).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return mascota;
         }

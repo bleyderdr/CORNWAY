@@ -28,6 +28,17 @@ namespace CORNWAY.Context
             optionsBuilder.UseLazyLoadingProxies();
         }
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Arma>().HasQueryFilter(e => e.IsActive);
+            modelBuilder.Entity<Enemigo>().HasQueryFilter(e => e.IsActive);
+            modelBuilder.Entity<Fertilizante>().HasQueryFilter(e => e.IsActive);
+            modelBuilder.Entity<Herramienta>().HasQueryFilter(e => e.IsActive);
+            modelBuilder.Entity<Mascota>().HasQueryFilter(e => e.IsActive);
+            modelBuilder.Entity<Personaje>().HasQueryFilter(e => e.IsActive);
+            modelBuilder.Entity<Semilla>().HasQueryFilter(e => e.IsActive);
+            modelBuilder.Entity<Sensor>().HasQueryFilter(e => e.IsActive);
+            modelBuilder.Entity<Terreno>().HasQueryFilter(e => e.IsActive);
+        }
     }
 }

@@ -18,7 +18,8 @@ namespace CORNWAY.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Vida = table.Column<int>(type: "int", nullable: false),
                     Daño = table.Column<int>(type: "int", nullable: false),
-                    Recompenza = table.Column<int>(type: "int", nullable: false)
+                    Recompenza = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,7 +32,8 @@ namespace CORNWAY.Migrations
                 {
                     FertiId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,7 +50,8 @@ namespace CORNWAY.Migrations
                     Vida = table.Column<int>(type: "int", nullable: false),
                     Dinero = table.Column<int>(type: "int", nullable: false),
                     Maiz = table.Column<int>(type: "int", nullable: false),
-                    EnemigoId = table.Column<int>(type: "int", nullable: false)
+                    EnemigoId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,7 +73,8 @@ namespace CORNWAY.Migrations
                     Daño = table.Column<int>(type: "int", nullable: false),
                     Tipo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Precio = table.Column<int>(type: "int", nullable: false),
-                    PersonajeId = table.Column<int>(type: "int", nullable: false)
+                    PersonajeId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -90,7 +94,8 @@ namespace CORNWAY.Migrations
                     HerramientaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Tipo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PersonajeId = table.Column<int>(type: "int", nullable: false)
+                    PersonajeId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,7 +116,8 @@ namespace CORNWAY.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Vida = table.Column<int>(type: "int", nullable: false),
                     Daño = table.Column<int>(type: "int", nullable: false),
-                    PersonajeId = table.Column<int>(type: "int", nullable: false)
+                    PersonajeId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -132,7 +138,8 @@ namespace CORNWAY.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TiempoCrecimiento = table.Column<int>(type: "int", nullable: false),
                     Precio = table.Column<int>(type: "int", nullable: false),
-                    PersonajeId = table.Column<int>(type: "int", nullable: false)
+                    PersonajeId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -154,7 +161,8 @@ namespace CORNWAY.Migrations
                     Humedad = table.Column<int>(type: "int", nullable: false),
                     Temperatura = table.Column<int>(type: "int", nullable: false),
                     FertiId = table.Column<int>(type: "int", nullable: false),
-                    SemillaId = table.Column<int>(type: "int", nullable: false)
+                    SemillaId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -181,7 +189,8 @@ namespace CORNWAY.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Descripcion = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    TerrenoId = table.Column<int>(type: "int", nullable: false)
+                    TerrenoId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

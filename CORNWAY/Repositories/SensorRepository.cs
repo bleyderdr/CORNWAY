@@ -46,12 +46,10 @@ namespace CORNWAY.Repositories
         
         public async Task<Sensor?> DeleteSensor(int id)
         {
-            var sensor = await _db.Sensor.FindAsync(id);
-            if (sensor == null)
-            {
-                return null;
-            }
-            _db.Sensor.Remove(sensor);
+            Sensor? sensor = await _db.Sensor.FindAsync(id);
+            if (sensor == null) return sensor;
+            sensor.IsActive = false;
+            _db.Entry(sensor).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return sensor;
         }

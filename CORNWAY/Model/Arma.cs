@@ -14,8 +14,11 @@ namespace CORNWAY.Model
         public required int Precio { get; set; }
         [ForeignKey(nameof(Personaje))]
         public required int PersonajeId { get; set; }
+        [JsonIgnore]
+        public bool IsActive { get; set; } = true;
 
         public virtual Personaje? Personaje { get; set; }
+        
 
     }
     

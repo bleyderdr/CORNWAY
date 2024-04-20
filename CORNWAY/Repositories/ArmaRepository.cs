@@ -47,12 +47,10 @@ namespace CORNWAY.Repositories
         
         public async Task<Arma?> DeleteArma(int id)
         {
-            var arma = await _db.Arma.FindAsync(id);
-            if (arma == null)
-            {
-                return null;
-            }
-            _db.Arma.Remove(arma);
+            Arma? arma = await _db.Arma.FindAsync(id);
+            if (arma == null) return arma;
+            arma.IsActive = false;
+            _db.Entry(arma).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return arma;
         }
