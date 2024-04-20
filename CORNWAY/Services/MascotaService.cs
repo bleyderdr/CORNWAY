@@ -58,17 +58,10 @@ namespace CORNWAY.Services
             )
         {
            Mascota? newMasocta = await mascotaRepository.GetMascota(MascotaId);
-            if (newMasocta == null)
-            {
-                throw new Exception("Mascota no encontrada");
-            }
-           else
-            {
+            if (newMasocta == null) throw new Exception("Mascota no encontrada");
                 newMasocta.Vida = Vida ?? newMasocta.Vida;
                 newMasocta.Daño = Daño ?? newMasocta.Daño;
                 newMasocta.PersonajeId = PersonajeId ?? newMasocta.PersonajeId;
-
-            }
             return await mascotaRepository.PutMascota(newMasocta);
         }
 

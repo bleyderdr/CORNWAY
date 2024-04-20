@@ -12,12 +12,14 @@ namespace CORNWAY.Services
         Task<Sensor?> GetSensor(int id);
         Task<Sensor> CreateSensor(
              string Nombre,
-             string Descripcion
-                                  );
+             string Descripcion,
+             int TerrenoId
+             );
         Task<Sensor> PutSensor(
              int SensorId,
              string? Nombre,
-             string? Descripcion
+             string? Descripcion,
+             int? TerrenoId
                                   );
         Task<Sensor?> DeleteSensor(int id);
     }
@@ -35,20 +37,23 @@ namespace CORNWAY.Services
         
         public async Task<Sensor> CreateSensor(
              string Nombre,
-             string Descripcion
+             string Descripcion,
+             int TerrenoId
              )
         {
             return await SensorRepository.CreateSensor(new Sensor
             {
                 Nombre = Nombre,
-                Descripcion = Descripcion
+                Descripcion = Descripcion,
+                TerrenoId = TerrenoId
             });
         }
 
         public async Task<Sensor> PutSensor(
                 int SensorId,
                 string? Nombre,
-                string? Descripcion
+                string? Descripcion,
+                int? TerrenoId
                 )
         {
             Sensor? newSensor = await SensorRepository.GetSensor(SensorId);

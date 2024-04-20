@@ -30,8 +30,8 @@ namespace CORNWAY.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CreateFertilizante(
-                                  [Required] string Nombre
-                                  )
+            [Required] string Nombre
+            )
         {
             var newFertilizante = await fertilizanteService.CreateFertilizante(Nombre);
             return CreatedAtAction(nameof(GetFertilizante), new { id = newFertilizante.FertiId }, newFertilizante);
@@ -39,9 +39,9 @@ namespace CORNWAY.Controllers
 
         [HttpPut]
         public async Task<IActionResult> PutFertilizante(
-                                  [Required] int FertiId,
-                                                                   [Required] string? Nombre
-                                  )
+            [Required] int FertiId,
+            [Required] string? Nombre
+            )
         {
             var newFertilizante = await fertilizanteService.PutFertilizante(FertiId, Nombre);
             return Ok(newFertilizante);

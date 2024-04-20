@@ -30,10 +30,11 @@ namespace CORNWAY.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateSensor(
             [Required][MaxLength(40)] string Nombre,
-            [Required][MaxLength(40)] string Descripcion
-                       )
+            [Required][MaxLength(40)] string Descripcion,
+            [Required] int TerrenoId
+            )
         {
-            var newSensor = await sensorService.CreateSensor(Nombre, Descripcion);
+            var newSensor = await sensorService.CreateSensor(Nombre, Descripcion, TerrenoId);
             return CreatedAtAction(nameof(GetSensor), new { id = newSensor.SensorId }, newSensor);
         }
 
@@ -41,10 +42,11 @@ namespace CORNWAY.Controllers
         public async Task<IActionResult> PutSensor(
             [Required] int SensorId,
             [MaxLength(40)] string? Nombre,
-            [MaxLength(40)] string? Descripcion
+            [MaxLength(40)] string? Descripcion,
+            [Required] int? TerrenoId
             )
         {
-            var newSensor = await sensorService.PutSensor(SensorId, Nombre, Descripcion);
+            var newSensor = await sensorService.PutSensor(SensorId, Nombre, Descripcion, TerrenoId);
             return Ok(newSensor);
         }
 

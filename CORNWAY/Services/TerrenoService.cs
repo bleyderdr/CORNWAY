@@ -48,13 +48,10 @@ namespace CORNWAY.Services
         {
             return await TerrenoRepository.CreateTerreno(new Terreno
             {
-
                 Humedad = Humedad,
                 Temperatura = Temperatura,
                 FertiId = FertiId,
                 SemillaId = SemillaId
-
-
             });
         }
         public async Task<Terreno> PutTerreno(

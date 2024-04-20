@@ -16,7 +16,7 @@ namespace CORNWAY.Controllers
             return Ok(mascotas);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetMascota(int id)
         {
             Mascota? mascota = await mascotaService.GetMascota(id);
@@ -50,7 +50,7 @@ namespace CORNWAY.Controllers
             return Ok(newMascota);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteMascota(int id)
         {
             var mascota = await mascotaService.DeleteMascota(id);
