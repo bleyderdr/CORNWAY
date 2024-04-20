@@ -12,12 +12,14 @@ namespace CORNWAY.Services
         Task<Mascota?> GetMascota(int id);
         Task<Mascota> CreateMascota(
                       int Vida,
-                      int Daño
+                      int Daño,
+                      int PersonajeId
                       );
         Task<Mascota> PutMascota(
                       int MascotaId,
                       int? Vida,
-                      int? Daño
+                      int? Daño,
+                      int? PersonajeId
                        );
          
         Task<Mascota?> DeleteMascota(int id);
@@ -36,20 +38,23 @@ namespace CORNWAY.Services
 
         public async Task<Mascota> CreateMascota(
             int Vida,
-            int Daño
+            int Daño,
+            int PersonajeId
             )
         {
             return await mascotaRepository.CreateMascota(new Mascota
             {
                 Vida = Vida,
-                Daño = Daño
+                Daño = Daño,
+                PersonajeId = PersonajeId
             });
         }
 
         public async Task<Mascota> PutMascota(
             int MascotaId,
             int? Vida,
-            int? Daño
+            int? Daño,
+            int? PersonajeId
             )
         {
            Mascota? newMasocta = await mascotaRepository.GetMascota(MascotaId);
@@ -61,6 +66,7 @@ namespace CORNWAY.Services
             {
                 newMasocta.Vida = Vida ?? newMasocta.Vida;
                 newMasocta.Daño = Daño ?? newMasocta.Daño;
+                newMasocta.PersonajeId = PersonajeId ?? newMasocta.PersonajeId;
 
             }
             return await mascotaRepository.PutMascota(newMasocta);

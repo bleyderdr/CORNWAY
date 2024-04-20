@@ -12,12 +12,12 @@ namespace CORNWAY.Services
         Task<Herramienta?> GetHerramienta(int id);
         Task<Herramienta> CreateHerramienta(
            string Tipo,
-           int Personaje
+           int PersonajeId
                                   );
         Task<Herramienta> PutHerramienta(
            int HerramientaId,
            string? Tipo,
-           int? Personaje
+           int? PersonajeId
                      );
 
         Task<Herramienta?> DeleteHerramienta(int id);
@@ -35,21 +35,21 @@ namespace CORNWAY.Services
         }
         public async Task<Herramienta> CreateHerramienta(
                        string Tipo,
-                                  int Personaje
+                                  int PersonajeId
                        )
 
         {
             return await herramientaRepository.CreateHerramienta(new Herramienta
             {
                 Tipo = Tipo,
-                PersonajeId = Personaje
+                PersonajeId = PersonajeId
 
             });
         }
         public async Task<Herramienta> PutHerramienta(
             int HerramientaId,
             string? Tipo,
-            int? Personaje
+            int? PersonajeId
                        )
         {
             Herramienta? newHerramienta = await herramientaRepository.GetHerramienta(HerramientaId);
@@ -60,7 +60,7 @@ namespace CORNWAY.Services
             else
             {
                 newHerramienta.Tipo = Tipo ?? newHerramienta.Tipo;
-                newHerramienta.PersonajeId = Personaje ?? newHerramienta.PersonajeId;
+                newHerramienta.PersonajeId = PersonajeId ?? newHerramienta.PersonajeId;
                 return await herramientaRepository.PutHerramienta(newHerramienta);
             }
         }

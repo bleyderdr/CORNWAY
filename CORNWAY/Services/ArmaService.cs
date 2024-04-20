@@ -37,7 +37,6 @@ namespace CORNWAY.Services
             return await ArmaRepository.GetArmas();
         }
         public async Task<Arma> CreateArma(
-
             int Daño,
             string Tipo,
             int Precio,
