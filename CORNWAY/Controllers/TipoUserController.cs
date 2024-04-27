@@ -7,7 +7,7 @@ namespace CORNWAY.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TipoUserContoller(ITipoUserService tipoUserService) : ControllerBase
+    public class TipoUserController(ITipoUserService tipoUserService) : ControllerBase
     {
         [HttpGet]
         public async Task<IActionResult> GetTipoUsers()
