@@ -27,6 +27,9 @@ builder.Services.AddScoped<IPersonajeRepository, PersonajeRepository>();
 builder.Services.AddScoped<ISemillaRepository, SemillaRepository>();
 builder.Services.AddScoped<ISensorRepository, SensorRepository>();
 builder.Services.AddScoped<ITerrenoRepository, TerrenoRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITipoUserRepository, TipoUserRepository>();
+builder.Services.AddScoped<ILogroRepository, LogroRepository>();
 
 //add scoped services
 builder.Services.AddScoped<IArmaService, ArmaService>();
@@ -38,6 +41,9 @@ builder.Services.AddScoped<IPersonajeService, PersonajeService>();
 builder.Services.AddScoped<ISemillaService, SemillaService>();
 builder.Services.AddScoped<ISensorService, SensorService>();
 builder.Services.AddScoped<ITerrenoService, TerrenoService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITipoUserService, TipoUserService>();
+builder.Services.AddScoped<ILogroService, LogroService>();
 
 var app = builder.Build();
 

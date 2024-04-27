@@ -15,6 +15,9 @@ namespace CORNWAY.Context
         public DbSet<Fertilizante> Fertilizante { get; set; }
         public DbSet<Sensor> Sensor { get; set; }
         public DbSet<Terreno> Terreno { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<TipoUser> TipoUser { get; set; }
+        public DbSet<Logro> Logro { get; set; }
 
 
 
@@ -39,6 +42,9 @@ namespace CORNWAY.Context
             modelBuilder.Entity<Semilla>().HasQueryFilter(e => e.IsActive);
             modelBuilder.Entity<Sensor>().HasQueryFilter(e => e.IsActive);
             modelBuilder.Entity<Terreno>().HasQueryFilter(e => e.IsActive);
+            modelBuilder.Entity<User>().HasQueryFilter(e => e.IsActive);
+            modelBuilder.Entity<TipoUser>().HasQueryFilter(e => e.IsActive);
+            modelBuilder.Entity<Logro>().HasQueryFilter(e => e.IsActive);
         }
     }
 }

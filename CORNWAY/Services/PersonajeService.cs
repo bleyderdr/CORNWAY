@@ -68,19 +68,15 @@ namespace CORNWAY.Services
                 )
         {
            Personaje? newPersonaje = await personajeRepository.GetPersonaje(PersonajeId);
-            if (newPersonaje == null)
-            {
-                throw new Exception("Personaje no encontrado");
-            }
-           else
-            {
+            if (newPersonaje == null)throw new Exception("Personaje no encontrado");
+           
                newPersonaje.Nombre = Nombre ?? newPersonaje.Nombre;
                 newPersonaje.Vida = Vida ?? newPersonaje.Vida;
                 newPersonaje.Dinero = Dinero ?? newPersonaje.Dinero;
                 newPersonaje.Maiz = Maiz ?? newPersonaje.Maiz;
                 newPersonaje.EnemigoId = EnemigoId ?? newPersonaje.EnemigoId;
                return await personajeRepository.PutPersonaje(newPersonaje);
-           }
+           
         }
 
         public async Task<Personaje?> DeletePersonaje(int id)

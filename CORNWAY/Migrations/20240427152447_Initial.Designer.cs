@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CORNWAY.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240420151855_Initial")]
+    [Migration("20240427152447_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -129,6 +129,27 @@ namespace CORNWAY.Migrations
                     b.HasIndex("PersonajeId");
 
                     b.ToTable("Herramienta");
+                });
+
+            modelBuilder.Entity("CORNWAY.Model.Logro", b =>
+                {
+                    b.Property<int>("LogroId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LogroId"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("LogroId");
+
+                    b.ToTable("Logro");
                 });
 
             modelBuilder.Entity("CORNWAY.Model.Mascota", b =>
@@ -283,6 +304,73 @@ namespace CORNWAY.Migrations
                     b.ToTable("Terreno");
                 });
 
+            modelBuilder.Entity("CORNWAY.Model.TipoUser", b =>
+                {
+                    b.Property<int>("TipoUserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TipoUserId"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("TipoUserId");
+
+                    b.ToTable("TipoUser");
+                });
+
+            modelBuilder.Entity("CORNWAY.Model.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("LogroId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("PersonajeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("LogroId");
+
+                    b.HasIndex("PersonajeId");
+
+                    b.HasIndex("TipoUserId");
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("CORNWAY.Model.Arma", b =>
                 {
                     b.HasOne("CORNWAY.Model.Personaje", "Personaje")
@@ -366,6 +454,33 @@ namespace CORNWAY.Migrations
                     b.Navigation("Fertilizante");
 
                     b.Navigation("Semilla");
+                });
+
+            modelBuilder.Entity("CORNWAY.Model.User", b =>
+                {
+                    b.HasOne("CORNWAY.Model.Logro", "Logro")
+                        .WithMany()
+                        .HasForeignKey("LogroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CORNWAY.Model.Personaje", "Personaje")
+                        .WithMany()
+                        .HasForeignKey("PersonajeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CORNWAY.Model.TipoUser", "TipoUser")
+                        .WithMany()
+                        .HasForeignKey("TipoUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Logro");
+
+                    b.Navigation("Personaje");
+
+                    b.Navigation("TipoUser");
                 });
 #pragma warning restore 612, 618
         }
