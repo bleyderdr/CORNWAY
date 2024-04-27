@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CORNWAY.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240427152447_Initial")]
+    [Migration("20240427155407_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
