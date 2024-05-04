@@ -69,6 +69,36 @@ namespace CORNWAY.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TipoUserId = table.Column<int>(type: "int", nullable: false),
+                    LogroId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.UserId);
+                    table.ForeignKey(
+                        name: "FK_User_Logro_LogroId",
+                        column: x => x.LogroId,
+                        principalTable: "Logro",
+                        principalColumn: "LogroId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_User_TipoUser_TipoUserId",
+                        column: x => x.TipoUserId,
+                        principalTable: "TipoUser",
+                        principalColumn: "TipoUserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Personaje",
                 columns: table => new
                 {
@@ -79,6 +109,7 @@ namespace CORNWAY.Migrations
                     Dinero = table.Column<int>(type: "int", nullable: false),
                     Maiz = table.Column<int>(type: "int", nullable: false),
                     EnemigoId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -89,6 +120,12 @@ namespace CORNWAY.Migrations
                         column: x => x.EnemigoId,
                         principalTable: "Enemigo",
                         principalColumn: "EnemigoId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Personaje_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -181,43 +218,6 @@ namespace CORNWAY.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    TipoUserId = table.Column<int>(type: "int", nullable: false),
-                    PersonajeId = table.Column<int>(type: "int", nullable: false),
-                    LogroId = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.UserId);
-                    table.ForeignKey(
-                        name: "FK_User_Logro_LogroId",
-                        column: x => x.LogroId,
-                        principalTable: "Logro",
-                        principalColumn: "LogroId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_User_Personaje_PersonajeId",
-                        column: x => x.PersonajeId,
-                        principalTable: "Personaje",
-                        principalColumn: "PersonajeId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_User_TipoUser_TipoUserId",
-                        column: x => x.TipoUserId,
-                        principalTable: "TipoUser",
-                        principalColumn: "TipoUserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Terreno",
                 columns: table => new
                 {
@@ -289,6 +289,11 @@ namespace CORNWAY.Migrations
                 column: "EnemigoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Personaje_UserId",
+                table: "Personaje",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Semilla_PersonajeId",
                 table: "Semilla",
                 column: "PersonajeId");
@@ -314,11 +319,6 @@ namespace CORNWAY.Migrations
                 column: "LogroId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_PersonajeId",
-                table: "User",
-                column: "PersonajeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_User_TipoUserId",
                 table: "User",
                 column: "TipoUserId");
@@ -340,16 +340,7 @@ namespace CORNWAY.Migrations
                 name: "Sensor");
 
             migrationBuilder.DropTable(
-                name: "User");
-
-            migrationBuilder.DropTable(
                 name: "Terreno");
-
-            migrationBuilder.DropTable(
-                name: "Logro");
-
-            migrationBuilder.DropTable(
-                name: "TipoUser");
 
             migrationBuilder.DropTable(
                 name: "Fertilizante");
@@ -362,6 +353,15 @@ namespace CORNWAY.Migrations
 
             migrationBuilder.DropTable(
                 name: "Enemigo");
+
+            migrationBuilder.DropTable(
+                name: "User");
+
+            migrationBuilder.DropTable(
+                name: "Logro");
+
+            migrationBuilder.DropTable(
+                name: "TipoUser");
         }
     }
 }

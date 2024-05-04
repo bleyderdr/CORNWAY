@@ -17,13 +17,10 @@ namespace CORNWAY.Model
         [ForeignKey(nameof(TipoUser))]
 
         public int TipoUserId { get; set; }
-        [ForeignKey(nameof(Personaje))]
-        public int PersonajeId { get; set; }
         [ForeignKey(nameof(Logro))]
         public int LogroId { get; set; }
 
         public virtual TipoUser? TipoUser { get; set; }
-        public virtual Personaje? Personaje { get; set; }
         public virtual Logro? Logro { get; set; }
         [JsonIgnore]
         public bool IsActive { get; set; } = true;

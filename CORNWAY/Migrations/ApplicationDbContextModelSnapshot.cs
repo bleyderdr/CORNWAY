@@ -201,12 +201,17 @@ namespace CORNWAY.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Vida")
                         .HasColumnType("int");
 
                     b.HasKey("PersonajeId");
 
                     b.HasIndex("EnemigoId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Personaje");
                 });
@@ -346,9 +351,6 @@ namespace CORNWAY.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("PersonajeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TipoUserId")
                         .HasColumnType("int");
 
@@ -360,8 +362,6 @@ namespace CORNWAY.Migrations
                     b.HasKey("UserId");
 
                     b.HasIndex("LogroId");
-
-                    b.HasIndex("PersonajeId");
 
                     b.HasIndex("TipoUserId");
 
@@ -409,7 +409,15 @@ namespace CORNWAY.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CORNWAY.Model.User", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Enemigo");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("CORNWAY.Model.Semilla", b =>
@@ -461,12 +469,6 @@ namespace CORNWAY.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CORNWAY.Model.Personaje", "Personaje")
-                        .WithMany()
-                        .HasForeignKey("PersonajeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CORNWAY.Model.TipoUser", "TipoUser")
                         .WithMany()
                         .HasForeignKey("TipoUserId")
@@ -474,8 +476,6 @@ namespace CORNWAY.Migrations
                         .IsRequired();
 
                     b.Navigation("Logro");
-
-                    b.Navigation("Personaje");
 
                     b.Navigation("TipoUser");
                 });

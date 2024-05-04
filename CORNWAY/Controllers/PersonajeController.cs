@@ -33,10 +33,11 @@ namespace CORNWAY.Controllers
            [Required] int Vida,
            [Required] int Dinero,
            [Required] int Maiz,
-           [Required] int EnemigoId
-                       )
+           int EnemigoId,
+           [Required] int UserId
+           )
         {
-            var newPersonaje = await personajeService.CreatePersonaje(Nombre, Vida, Dinero, Maiz, EnemigoId);
+            var newPersonaje = await personajeService.CreatePersonaje(Nombre, Vida, Dinero, Maiz, EnemigoId, UserId);
             return CreatedAtAction(nameof(GetPersonaje), new { id = newPersonaje.PersonajeId }, newPersonaje);
         }
 
@@ -47,10 +48,11 @@ namespace CORNWAY.Controllers
             [Required] int? Vida,
             [Required] int? Dinero,
             [Required] int? Maiz,
-            [Required] int? EnemigoId
-                       )
+            int? EnemigoId,
+            [Required] int? UserId
+            )
         {
-            var newPersonaje = await personajeService.PutPersonaje(PersonajeId, Nombre, Vida, Dinero, Maiz, EnemigoId);
+            var newPersonaje = await personajeService.PutPersonaje(PersonajeId, Nombre, Vida, Dinero, Maiz, EnemigoId, UserId);
             return Ok(newPersonaje);
         }
 
