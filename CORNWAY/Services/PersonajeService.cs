@@ -15,7 +15,8 @@ namespace CORNWAY.Services
               int Vida,
               int Dinero,
               int Maiz,
-              int EnemigoId
+              int EnemigoId,
+              int UserId
               );
         Task<Personaje> PutPersonaje(
               int PersonajeId,
@@ -23,7 +24,8 @@ namespace CORNWAY.Services
               int? Vida,
               int? Dinero,
               int? Maiz,
-              int? EnemigoId
+              int? EnemigoId,
+              int? UserId
               );
          
         Task<Personaje?> DeletePersonaje(int id);
@@ -45,7 +47,8 @@ namespace CORNWAY.Services
             int Vida,
             int Dinero,
             int Maiz,
-            int EnemigoId
+            int EnemigoId,
+            int UserId
                        )
         {
             return await personajeRepository.CreatePersonaje(new Personaje
@@ -54,7 +57,8 @@ namespace CORNWAY.Services
                 Vida = Vida,
                 Dinero = Dinero,
                 Maiz = Maiz,
-                EnemigoId = EnemigoId
+                EnemigoId = EnemigoId,
+                UserId = UserId
             });
         }
 
@@ -64,18 +68,20 @@ namespace CORNWAY.Services
                 int? Vida,
                 int? Dinero,
                 int? Maiz,
-                int? EnemigoId
+                int? EnemigoId,
+                int? UserId
                 )
         {
            Personaje? newPersonaje = await personajeRepository.GetPersonaje(PersonajeId);
             if (newPersonaje == null)throw new Exception("Personaje no encontrado");
            
-               newPersonaje.Nombre = Nombre ?? newPersonaje.Nombre;
-                newPersonaje.Vida = Vida ?? newPersonaje.Vida;
-                newPersonaje.Dinero = Dinero ?? newPersonaje.Dinero;
-                newPersonaje.Maiz = Maiz ?? newPersonaje.Maiz;
-                newPersonaje.EnemigoId = EnemigoId ?? newPersonaje.EnemigoId;
-               return await personajeRepository.PutPersonaje(newPersonaje);
+            newPersonaje.Nombre = Nombre ?? newPersonaje.Nombre;
+            newPersonaje.Vida = Vida ?? newPersonaje.Vida;
+            newPersonaje.Dinero = Dinero ?? newPersonaje.Dinero;
+            newPersonaje.Maiz = Maiz ?? newPersonaje.Maiz;
+            newPersonaje.EnemigoId = EnemigoId ?? newPersonaje.EnemigoId;
+            newPersonaje.UserId = UserId ?? newPersonaje.UserId;
+            return await personajeRepository.PutPersonaje(newPersonaje);
            
         }
 

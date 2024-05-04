@@ -15,8 +15,10 @@ namespace CORNWAY.Model
         public required int Maiz { get; set; }
         [ForeignKey(nameof(Enemigo))]
         public int EnemigoId { get; set; }
+        [ForeignKey(nameof(User))]
+        public int UserId { get; set; }
 
-
+        public virtual User? Usuario { get; set; }
         public virtual Enemigo? Enemigo { get; set; }
         [JsonIgnore]
         public bool IsActive { get; set; } = true;

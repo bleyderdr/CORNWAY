@@ -33,11 +33,10 @@ namespace CORNWAY.Controllers
             [Required][MaxLength(320)][EmailAddress(ErrorMessage = "Correro incorrecto")] string Email,
             [Required][MaxLength(50)] string Password,
             [Required] int TipoUserId,
-            [Required] int PersonajeId,
             [Required] int LogroId
             )
         {
-            var user = await userService.CreateUser(Username, Email, Password, TipoUserId, PersonajeId, LogroId);
+            var user = await userService.CreateUser(Username, Email, Password, TipoUserId, LogroId);
             return CreatedAtAction(nameof(GetUser), new { id = user.UserId }, user);
         }
 
@@ -48,11 +47,10 @@ namespace CORNWAY.Controllers
             [MaxLength(320)][EmailAddress(ErrorMessage = "Correo incorrecto")] string? Email,
             [MaxLength(50)] string? Password,
             int? TipoUserId,
-            int? PersonajeId,
-                                                                                         int? LogroId
+            int? LogroId
             )
         {
-            var user = await userService.PutUser(UserId, Username, Email, Password, TipoUserId, PersonajeId, LogroId);
+            var user = await userService.PutUser(UserId, Username, Email, Password, TipoUserId, LogroId);
             return Ok(user);
         }
 

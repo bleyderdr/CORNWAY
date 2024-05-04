@@ -12,7 +12,6 @@ namespace CORNWAY.Services
             string Email,
             string Password,
             int TipoUserId,
-            int PersonajeId,
             int LogroId
                          );
         Task<User> PutUser(
@@ -21,7 +20,6 @@ namespace CORNWAY.Services
             string? Email,
             string? Password,
             int? TipoUserId,
-            int? PersonajeId,
             int? LogroId
            );
          
@@ -44,7 +42,6 @@ namespace CORNWAY.Services
             string Email,
             string Password,
             int TipoUserId,
-            int PersonajeId,
             int LogroId
             )
         {
@@ -54,7 +51,6 @@ namespace CORNWAY.Services
                 Email = Email,
                 Password = Password,
                 TipoUserId = TipoUserId,
-                PersonajeId = PersonajeId,
                 LogroId = LogroId
             });
         }
@@ -65,7 +61,6 @@ namespace CORNWAY.Services
              string? Email,
              string? Password,
              int? TipoUserId,
-             int? PersonajeId,
              int? LogroId
                        )
         {
@@ -76,7 +71,6 @@ namespace CORNWAY.Services
                 user.Email = Email ?? user.Email;
                 user.Password = Password ?? user.Password;
                 user.TipoUserId = TipoUserId ?? user.TipoUserId;
-                user.PersonajeId = PersonajeId ?? user.PersonajeId;
                 user.LogroId = LogroId ?? user.LogroId;
                 return await userRepository.PutUser(user);
         }
