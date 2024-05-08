@@ -11,11 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CORNWAY.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<<< HEAD:CORNWAY/Migrations/20240427155407_Initial.Designer.cs
-    [Migration("20240427155407_Initial")]
-========
-    [Migration("20240504024818_Initial")]
->>>>>>>> 388ae8a7c393341d5f17058f7aced0d1118ca3ee:CORNWAY/Migrations/20240504024818_Initial.Designer.cs
+    [Migration("20240504133430_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
