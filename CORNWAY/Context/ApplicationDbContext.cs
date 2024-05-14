@@ -18,6 +18,7 @@ namespace CORNWAY.Context
         public DbSet<User> User { get; set; }
         public DbSet<TipoUser> TipoUser { get; set; }
         public DbSet<Logro> Logro { get; set; }
+        public DbSet<Auth> Auth { get; set; }
 
 
 

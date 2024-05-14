@@ -24,6 +24,8 @@ namespace CORNWAY.Services
            );
          
         Task<User?> DeleteUser(int id);
+
+        Task<bool> Authenticate(Auth auth);
     }
     public class UserService(IUserRepository userRepository) : IUserService
     {
@@ -78,6 +80,11 @@ namespace CORNWAY.Services
         public async Task<User?> DeleteUser(int id)
         {
             return await userRepository.DeleteUser(id);
+        }
+
+        public async Task<bool> Authenticate(Auth auth)
+        {
+            return await userRepository.Authenticate(auth);
         }
     }
 
